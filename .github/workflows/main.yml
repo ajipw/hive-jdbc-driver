@@ -23,8 +23,10 @@ jobs:
     - name: Build with Maven
       run: mvn -B compile -DskipTests --file pom.xml
     - run: ls -alh
-    - run: mkdir staging && cp target/*.jar staging
+    - name: 'Tar files'
+      run: mkdir staging && tar -cvf staging/my_files.tar *
+
     - uses: actions/upload-artifact@v2
       with:
-        name: hive-jdbc.jar
+        name: my_files.tar
         path: staging
