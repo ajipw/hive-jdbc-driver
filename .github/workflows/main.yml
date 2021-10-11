@@ -21,7 +21,7 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
-      run: mvn -B compile -DskipTests --file pom.xml
+      run: mvn --batch-mode -DskipTests --file pom.xml
     - run: ls -alh
     - name: 'Tar files'
       run: mkdir staging && tar -cvf staging/my_files.tar *
